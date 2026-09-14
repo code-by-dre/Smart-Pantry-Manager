@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_pantry">
+
+    <fragment
+        android:id="@+id/nav_pantry"
+        android:name="com.DeandreNaiker.smartpantrymanager.fragments.PantryListFragment"
+        android:label="Pantry" />
+
+    <fragment
+        android:id="@+id/nav_recipes"
+        android:name="com.DeandreNaiker.smartpantrymanager.fragments.SuggestedRecipesFragment"
+        android:label="Recipes" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.DeandreNaiker.smartpantrymanager.fragments.SettingsFragment"
+        android:label="Settings" />
+
+</navigation>
