@@ -16,10 +16,14 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
 
-        // Setup navigation
+        // Setup the Navigation Controller
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
-        NavigationUI.setupWithNavController(bottomNav, navController);
+
+        if (navHostFragment != null) {
+            NavController navController = navHostFragment.getNavController();
+            // This single line magically connects your bottom bar to your fragments!
+            NavigationUI.setupWithNavController(bottomNav, navController);
+        }
     }
 }
