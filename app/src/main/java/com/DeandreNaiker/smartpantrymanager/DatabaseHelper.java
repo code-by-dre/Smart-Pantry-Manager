@@ -111,6 +111,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_RECIPES, null, contentValues);
     }
 
+    // deleting an ingredient
+    public void deleteIngredient(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PANTRY, COLUMN_PANTRY_NAME + " = ?", new String[]{name});
+        db.close();
+    }
+
     // the method to preload the 15 recipes
     private void seedDefaultRecipes(SQLiteDatabase db) {
         insertRecipe(db, "Tomato Soup", "tomato, onion, garlic", "1. Chop vegetables. 2. Boil. 3. Blend.");

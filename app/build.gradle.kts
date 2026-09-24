@@ -35,6 +35,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.1")
     implementation(libs.activity.ktx)
     implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)
