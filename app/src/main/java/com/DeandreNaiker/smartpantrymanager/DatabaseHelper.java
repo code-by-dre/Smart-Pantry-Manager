@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -116,6 +118,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PANTRY, COLUMN_PANTRY_NAME + " = ?", new String[]{name});
         db.close();
+    }
+
+    public List<String> getPantryIngredientNames() {
+        List<String> ingredientNames = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_PANTRY_NAME + " FROM " + TABLE_PANTRY, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(0).toLowerCase().trim();
+                ingredientNames.add(name);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return ingredientNames;
     }
 
     // the method to preload the 15 recipes
