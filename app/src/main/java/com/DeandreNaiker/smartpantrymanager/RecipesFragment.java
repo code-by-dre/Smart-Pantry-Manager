@@ -19,6 +19,7 @@ public class RecipesFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecipeAdapter recipeAdapter;
     private DatabaseHelper databaseHelper;
+    private TextView tvEmptyRecipes;
 
     @Nullable
     @Override
@@ -26,8 +27,9 @@ public class RecipesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recipes, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewRecipes);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        tvEmptyRecipes = view.findViewById(R.id.tvEmptyRecipes);
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         databaseHelper = new DatabaseHelper(requireContext());
 
         // 1. Fetch available ingredients from SQLite
@@ -44,7 +46,7 @@ public class RecipesFragment extends Fragment {
             boolean canMake = false;
             for (String requiredItem : recipe.getIngredients()) {
                 if (pantryIngredients.contains(requiredItem.toLowerCase().trim())) {
-                    canMake = true; // User has at least one matching ingredient
+                    canMake = true;
                     break;
                 }
             }
@@ -53,9 +55,16 @@ public class RecipesFragment extends Fragment {
             }
         }
 
-        // 4. Display matching recipes (or empty state)
-        recipeAdapter = new RecipeAdapter(matchingRecipes);
-        recyclerView.setAdapter(recipeAdapter);
+        // 4. Handle Empty State
+        if (matchingRecipes.isEmpty()) {
+            tvEmptyRecipes.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            tvEmptyRecipes.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+            recipeAdapter = new RecipeAdapter(matchingRecipes);
+            recyclerView.setAdapter(recipeAdapter);
+        }
 
         return view;
     }
