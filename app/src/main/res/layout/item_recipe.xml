@@ -5,8 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="#1AFFC107"
     app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,32 +15,55 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Recipe Title -->
         <TextView
             android:id="@+id/tvRecipeTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recipe Title"
+            android:text="Recipe Name"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black" />
+            android:layout_marginBottom="8dp" />
 
+        <!-- Ingredients Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingredients:"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Ingredients List -->
         <TextView
             android:id="@+id/tvRecipeIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Ingredients: Butter, Flour, Milk"
+            android:text="ingredient 1, ingredient 2"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="14sp"
-            android:textColor="@android:color/darker_gray" />
+            android:layout_marginBottom="8dp" />
 
+        <!-- Steps Label -->
         <TextView
-            android:id="@+id/tvRecipeInstructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Instructions step-by-step..."
+            android:text="Instructions:"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
             android:textSize="14sp"
-            android:textColor="@android:color/black" />
+            android:layout_marginTop="4dp"/>
+
+        <!-- Steps List -->
+        <TextView
+            android:id="@+id/tvRecipeSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Step one\n2. Step two"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.DeandreNaiker.smartpantrymanager;
 
+import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-    private final List<Recipe> recipeList;
+    private List<Recipe> recipeList;
 
     public RecipeAdapter(List<Recipe> recipeList) {
         this.recipeList = recipeList;
@@ -29,6 +30,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         holder.tvTitle.setText(recipe.getTitle());
         holder.tvIngredients.setText("Ingredients: " + String.join(", ", recipe.getIngredients()));
         holder.tvInstructions.setText(recipe.getInstructions());
+
+        // Click listener to open recipe instructions dialog
+        holder.itemView.setOnClickListener(v -> {
+            new AlertDialog.Builder(v.getContext())
+                    .setTitle(recipe.getTitle())
+                    .setMessage("Required Ingredients:\n" + String.join(", ", recipe.getIngredients()) + "\n\nSteps:\n" + recipe.getInstructions())
+                    .setPositiveButton("Got it", (dialog, which) -> dialog.dismiss())
+                    .show();
+        });
     }
 
     @Override
@@ -43,7 +53,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvRecipeTitle);
             tvIngredients = itemView.findViewById(R.id.tvRecipeIngredients);
-            tvInstructions = itemView.findViewById(R.id.tvRecipeInstructions);
+            tvInstructions = itemView.findViewById(R.id.tvRecipeSteps);
         }
     }
 }

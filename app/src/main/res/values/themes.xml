@@ -1,9 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SmartPantryManager" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.SmartPantryManager" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color (Green). -->
+        <item name="colorPrimary">@color/app_green</item>
+        <item name="colorPrimaryVariant">@color/app_green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color (Yellow). -->
+        <item name="colorSecondary">@color/app_yellow</item>
+        <item name="colorSecondaryVariant">@color/app_yellow_dark</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Forces the Action Bar to use our custom Green style below -->
+        <item name="actionBarStyle">@style/GreenActionBar</item>
     </style>
 
-    <style name="Theme.SmartPantryManager" parent="Base.Theme.SmartPantryManager" />
+    <!-- Custom Style to lock the Action Bar to Green with White text in all modes -->
+    <style name="GreenActionBar" parent="Widget.MaterialComponents.ActionBar.Solid">
+        <item name="background">@color/app_green</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
 </resources>

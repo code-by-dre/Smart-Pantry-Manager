@@ -1,31 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="20dp">
+
+    <!-- Ingredient Name Label & Input -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingredient Name"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
 
     <EditText
         android:id="@+id/etDialogName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingredient Name (e.g., Rice)"
-        android:inputType="textCapWords" />
+        android:hint="e.g. Tomato"
+        android:textColor="?attr/colorOnSurface"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="16dp" />
 
-    <EditText
-        android:id="@+id/etDialogQuantity"
+    <!-- Quantity Label & Stepper Controls -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Quantity (e.g., 2.5)"
-        android:inputType="numberDecimal" />
+        android:text="Quantity"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
 
-    <EditText
-        android:id="@+id/etDialogUnit"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Unit (e.g., kg, liters, cans)"
-        android:inputType="text" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnMinus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="-"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:backgroundTint="@color/app_yellow"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etDialogQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:text="1"
+            android:gravity="center"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPlus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:backgroundTint="@color/app_yellow"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+    <!-- Measurement Unit Label & Spinner -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Measurement Unit"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <Spinner
+        android:id="@+id/spinnerUnit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Category Label & Spinner -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
 
 </LinearLayout>
