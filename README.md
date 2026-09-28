@@ -40,4 +40,7 @@ app/src/main/
 │   ├── PantryAdapter.java          # Binds database cursor to inventory UI
 │   └── RecipeAdapter.java          # Binds matching recipes to suggestion UI
 └── res/
+    ├── layout/                     # XML UI layouts (fragments, items, dialogs)
+    ├── navigation/                 # nav_graph.xml (Fragment routing)
+    └── values/                     # colors.xml, themes.xml (Light/Dark mode)
 
