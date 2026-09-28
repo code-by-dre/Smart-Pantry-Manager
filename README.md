@@ -45,52 +45,45 @@ app/src/main/
     └── values/                     # colors.xml, themes.xml (Light/Dark mode)
 
 ```
-Getting Started
-Prerequisites
-Android Studio (latest stable version recommended)
 
-Android SDK (Minimum API level 24 recommended)
+## Getting Started
 
-Git installed on your local machine
+### Prerequisites
 
-Installation & Setup
-1. Clone the repository:
+* Android Studio (latest stable version recommended)
+* Android SDK (Minimum API level 24 recommended)
+* Git installed on your local machine
 
-git clone [https://github.com/code-by-dre/Smart-Pantry-Manager.git](https://github.com/code-by-dre/Smart-Pantry-Manager.git)
+### Installation & Setup
 
-2. Open the project:
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/code-by-dre/Smart-Pantry-Manager.git](https://github.com/code-by-dre/Smart-Pantry-Manager.git)
 
-Launch Android Studio.
+2. **Open the project:**
+* Launch Android Studio.
+* Select File > Open and navigate to the cloned Smart-Pantry-Manager folder.
 
-Select File > Open and navigate to the cloned Smart-Pantry-Manager folder.
+3. **Sync Gradle:**
+* Allow Android Studio to download required dependencies and sync the Gradle files. (Click "Sync Now" if prompted).
 
-3. Sync Gradle:
+### Run the Application
+* 1. Set up an Android Virtual Device (AVD) via the Device Manager, or plug in a physical Android device via USB with USB Debugging enabled.
+* 2. Click the green Run 'app' button (Shift + F10) in the top toolbar.
+* 3. The app will install and launch on your device. The database will automatically seed with 100 recipes on the first run.
 
-Allow Android Studio to download required dependencies and sync the Gradle files. (Click "Sync Now" if prompted).
+### Customization
+* Recipes: Add, edit, or remove pre-loaded recipes by modifying the seedDefaultRecipes() method inside DatabaseHelper.java. (Note: Increment the DATABASE_VERSION to force an update).
+* Categories: Modify the dropdown categories arrays located in PantryFragment.java.
+* Theme: Adjust the primary brand colors (like the app's signature yellow) by editing res/values/colors.xml.
 
-Run the Application
-1. Set up an Android Virtual Device (AVD) via the Device Manager, or plug in a physical Android device via USB with USB Debugging enabled.
+### Disclaimer
+* This project was developed as a final-year practical assignment for the Mobile App Development 700 (MAD700) module. It represents original work and adheres to the strict-matching logic and minimum screen requirements outlined in the course rubric.
 
-2. Click the green Run 'app' button (Shift + F10) in the top toolbar.
-
-3. The app will install and launch on your device. The database will automatically seed with 100 recipes on the first run.
-
-Customization
-Recipes: Add, edit, or remove pre-loaded recipes by modifying the seedDefaultRecipes() method inside DatabaseHelper.java. (Note: Increment the DATABASE_VERSION to force an update).
-
-Categories: Modify the dropdown categories arrays located in PantryFragment.java.
-
-Theme: Adjust the primary brand colors (like the app's signature yellow) by editing res/values/colors.xml.
-
-Disclaimer
-This project was developed as a final-year practical assignment for the Mobile App Development 700 (MAD700) module. It represents original work and adheres to the strict-matching logic and minimum screen requirements outlined in the course rubric.
-
-Built with
-Android Studio
-
-Java
-
-SQLite
+### Built with
+* Android Studio
+* Java
+* SQLite
 
 Material Design Components
 
