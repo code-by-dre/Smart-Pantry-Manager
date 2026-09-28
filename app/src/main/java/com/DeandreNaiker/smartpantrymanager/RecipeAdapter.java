@@ -1,11 +1,12 @@
 package com.DeandreNaiker.smartpantrymanager;
 
-import android.app.AlertDialog;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
@@ -31,13 +32,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         holder.tvIngredients.setText("Ingredients: " + String.join(", ", recipe.getIngredients()));
         holder.tvInstructions.setText(recipe.getInstructions());
 
-        // Click listener to open recipe instructions dialog
+        // Navigate to the RecipeDetailFragment screen on click
         holder.itemView.setOnClickListener(v -> {
-            new AlertDialog.Builder(v.getContext())
-                    .setTitle(recipe.getTitle())
-                    .setMessage("Required Ingredients:\n" + String.join(", ", recipe.getIngredients()) + "\n\nSteps:\n" + recipe.getInstructions())
-                    .setPositiveButton("Got it", (dialog, which) -> dialog.dismiss())
-                    .show();
+            Bundle bundle = new Bundle();
+            bundle.putString("recipe_title", recipe.getTitle());
+            bundle.putString("recipe_ingredients", String.join(", ", recipe.getIngredients()));
+            bundle.putString("recipe_steps", recipe.getInstructions());
+
+            // Navigates using the NavController host
+            Navigation.findNavController(v).navigate(R.id.recipeDetailFragment, bundle);
         });
     }
 
