@@ -7,7 +7,6 @@ public class Recipe {
     private List<String> ingredients;
     private String instructions;
 
-    // "public" MUST be in front of Recipe here!
     public Recipe(String title, List<String> ingredients, String instructions) {
         this.title = title;
         this.ingredients = ingredients;
