@@ -43,16 +43,20 @@ public class RecipesFragment extends Fragment {
         // 2. Fetch all 100 recipes from SQLite
         masterRecipes = databaseHelper.getAllRecipes();
 
-        // 3. Filter recipes based on what's in the pantry
+        // 3. Filter recipes based on what's in the pantry (STRICT MATCHING)
         matchingRecipes.clear();
         for (Recipe recipe : masterRecipes) {
-            boolean canMake = false;
+            boolean canMake = true; // Assume we can make it until proven otherwise
+
             for (String requiredItem : recipe.getIngredients()) {
-                if (pantryIngredients.contains(requiredItem.toLowerCase().trim())) {
-                    canMake = true; // Recipe matches if you have at least one required ingredient
-                    break;
+                // If the pantry DOES NOT contain the required ingredient, we fail the strict match
+                if (!pantryIngredients.contains(requiredItem.toLowerCase().trim())) {
+                    canMake = false;
+                    break; // Stop checking this recipe, we are missing an ingredient
                 }
             }
+
+            // Only add to suggestions if EVERY ingredient was found
             if (canMake) {
                 matchingRecipes.add(recipe);
             }
