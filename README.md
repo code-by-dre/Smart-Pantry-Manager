@@ -68,9 +68,9 @@ app/src/main/
 * Allow Android Studio to download required dependencies and sync the Gradle files. (Click "Sync Now" if prompted).
 
 ### Run the Application
-* 1. Set up an Android Virtual Device (AVD) via the Device Manager, or plug in a physical Android device via USB with USB Debugging enabled.
-* 2. Click the green Run 'app' button (Shift + F10) in the top toolbar.
-* 3. The app will install and launch on your device. The database will automatically seed with 100 recipes on the first run.
+1. Set up an Android Virtual Device (AVD) via the Device Manager, or plug in a physical Android device via USB with USB Debugging enabled.
+2. Click the green Run 'app' button (Shift + F10) in the top toolbar.
+3. The app will install and launch on your device. The database will automatically seed with 100 recipes on the first run.
 
 ### Customization
 * Recipes: Add, edit, or remove pre-loaded recipes by modifying the seedDefaultRecipes() method inside DatabaseHelper.java. (Note: Increment the DATABASE_VERSION to force an update).
@@ -84,6 +84,5 @@ app/src/main/
 * Android Studio
 * Java
 * SQLite
-
-Material Design Components
+* Material Design Components
 
