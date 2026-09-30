@@ -11,9 +11,9 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "SmartPantry.db";
-    private static final int DATABASE_VERSION = 3; // Upgraded to 3 to load the new detailed recipes
+    private static final int DATABASE_VERSION = 3; // upgraded this to 3 to load the new detailed recipes
 
-    // Pantry table details
+    // pantry table details
     public static final String TABLE_PANTRY = "pantry";
     public static final String COLUMN_PANTRY_ID = "id";
     public static final String COLUMN_PANTRY_NAME = "name";
@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PANTRY_UNIT = "unit";
     public static final String COLUMN_PANTRY_CATEGORY = "category";
 
-    // Recipes table details
+    // the recipes table details
     public static final String TABLE_RECIPES = "recipes";
     public static final String COLUMN_RECIPE_ID = "id";
     public static final String COLUMN_RECIPE_NAME = "name";
@@ -59,8 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // --- PANTRY CRUD OPERATIONS ---
-
+    // the pantry crud ops
     public boolean insertIngredient(String name, double quantity, String unit, String category) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -153,7 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // --- RECIPE OPERATIONS ---
+    // recipe ops
 
     private void insertRecipe(SQLiteDatabase db, String name, String ingredients, String steps) {
         ContentValues contentValues = new ContentValues();
@@ -187,7 +186,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void seedDefaultRecipes(SQLiteDatabase db) {
-        // Core 15
+        
         insertRecipe(db, "Tomato Soup", "tomato, onion, garlic",
                 "1. Heat olive oil in a large pot over medium heat.\n\n" +
                         "2. Add finely diced onions and sauté until translucent (about 5 mins).\n\n" +
@@ -293,7 +292,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Blend on high speed until completely smooth and frothy.\n\n" +
                         "5. Pour into a tall glass and serve immediately.");
 
-        // Breakfast & Bakery
+        // brekkie and baking
         insertRecipe(db, "Avocado Toast", "bread, avocado, salt, pepper",
                 "1. Toast the bread until it reaches your desired crispness.\n\n" +
                         "2. Slice the avocado in half, remove the pit, and scoop the flesh into a bowl.\n\n" +
@@ -364,7 +363,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Blend on high speed for at least 60 seconds to ensure there are no leafy chunks.\n\n" +
                         "5. Pour into a glass and enjoy immediately.");
 
-        // Pasta & Italian
+        // pasta
         insertRecipe(db, "Spaghetti Bolognese", "pasta, beef, tomato, onion, garlic",
                 "1. Boil the pasta in a large pot of salted water until al dente.\n\n" +
                         "2. In a deep pan, brown the minced beef and chopped onions over medium-high heat.\n\n" +
@@ -435,7 +434,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Toss everything together, adding an extra drizzle of olive oil for moisture.\n\n" +
                         "5. Season with salt and pepper and serve warm.");
 
-        // Chicken & Poultry
+        // chicken
         insertRecipe(db, "Chicken Curry", "chicken, onion, garlic, curry powder, coconut milk",
                 "1. Chop the chicken into bite-sized cubes.\n\n" +
                         "2. Sauté chopped onions and garlic in a deep pan until soft and golden.\n\n" +
@@ -506,7 +505,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Reduce the heat and let it simmer rapidly until the sauce reduces into a thick, sticky glaze.\n\n" +
                         "5. Toss to ensure all pieces are coated and serve over rice.");
 
-        // Beef & Pork
+        // beef and pork
         insertRecipe(db, "Beef Tacos", "beef, tortilla, cheese, lettuce, tomato",
                 "1. Add minced beef to a skillet over medium-high heat and break it apart as it cooks.\n\n" +
                         "2. Drain any excess fat, then stir in your preferred taco spices and a splash of water.\n\n" +
@@ -577,7 +576,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Add the cooked pork back in and drizzle everything evenly with soy sauce.\n\n" +
                         "5. Stir-fry for 3-4 minutes until the rice is hot and slightly toasted.");
 
-        // Vegetarian & Vegan
+        // veg and vegan
         insertRecipe(db, "Veggie Curry", "potato, carrot, coconut milk, curry powder",
                 "1. Peel and chop the potatoes and carrots into even, bite-sized cubes.\n\n" +
                         "2. Heat a tablespoon of oil in a pot, add curry powder, and toast for 30 seconds until fragrant.\n\n" +
@@ -648,7 +647,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Pour the egg mixture carefully into the pie crust over the spinach.\n\n" +
                         "5. Bake for 35-40 minutes until the center is just set and the top is golden.");
 
-        // Seafood
+        // seafood
         insertRecipe(db, "Garlic Butter Shrimp", "shrimp, butter, garlic, lemon, parsley",
                 "1. Melt the butter in a large skillet over medium-high heat.\n\n" +
                         "2. Add minced garlic and cook for 1 minute until fragrant but not browned.\n\n" +
@@ -719,7 +718,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Cover and cook for another 10 minutes until the rice is tender, the shrimp are pink, and the mussels open.\n\n" +
                         "5. Discard any unopened mussels, let the pan rest for 5 minutes, and serve family-style.");
 
-        // Salads & Light Meals
+        // light meals
         insertRecipe(db, "Caesar Salad", "lettuce, croutons, parmesan, chicken",
                 "1. Grill or pan-fry the chicken breast until cooked, let it rest, and slice it thickly.\n\n" +
                         "2. Chop crisp lettuce and place it into a large serving bowl.\n\n" +
@@ -790,7 +789,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Pour the dressing over the vegetables and toss vigorously until every strand is coated.\n\n" +
                         "5. Let rest in the fridge for 30 minutes to soften slightly before eating.");
 
-        // Sandwiches & Wraps
+        // sandwiches and wraps
         insertRecipe(db, "BLT", "bread, bacon, lettuce, tomato, mayonnaise",
                 "1. Fry or bake the bacon strips until they are extremely crispy, then drain on paper towels.\n\n" +
                         "2. Toast two slices of bread to a deep golden brown.\n\n" +
@@ -861,7 +860,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Mix the meat and vegetables together into a tight pile shaped like your bun, and lay the cheese over the top to melt.\n\n" +
                         "5. Place the opened bun directly over the pile to steam, then use a spatula to scoop the whole thing into the bun.");
 
-        // Soups & Stews
+        // soups 
         insertRecipe(db, "Minestrone", "pasta, tomato, beans, carrot, celery",
                 "1. Finely chop the carrots and celery and sauté them in a large pot until they soften.\n\n" +
                         "2. Pour in chopped tomatoes and broth, bringing the soup to a lively simmer.\n\n" +
@@ -932,7 +931,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "4. Use a blender or immersion blender to purée the mixture into a thick, smooth, vibrant orange soup.\n\n" +
                         "5. Heat gently until warmed through, season with salt and pepper, and serve.");
 
-        // Desserts & Snacks
+        // desserts and snacks
         insertRecipe(db, "Chocolate Chip Cookies", "flour, butter, sugar, chocolate, egg",
                 "1. Preheat oven to 180°C (350°F). In a large bowl, vigorously cream the softened butter and sugar together until pale and fluffy.\n\n" +
                         "2. Beat in the egg until fully incorporated.\n\n" +
