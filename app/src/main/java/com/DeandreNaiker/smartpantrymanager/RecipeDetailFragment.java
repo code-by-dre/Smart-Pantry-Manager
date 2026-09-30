@@ -27,7 +27,7 @@ public class RecipeDetailFragment extends Fragment {
 
             tvTitle.setText(title);
 
-            // Format ingredients as a bulleted list
+            // formatting the ingredients as a bulleted list
             String[] ingredientsArray = rawIngredients.split(",");
             StringBuilder formattedIngredients = new StringBuilder();
             for (String ingredient : ingredientsArray) {
@@ -40,7 +40,6 @@ public class RecipeDetailFragment extends Fragment {
             }
             tvIngredients.setText(formattedIngredients.toString().trim());
 
-            // Directly set the detailed steps from your updated database
             tvSteps.setText(rawSteps);
         }
 
