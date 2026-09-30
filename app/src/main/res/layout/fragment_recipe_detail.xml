@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <!-- paddingTop="80dp" forcefully pushes the content down below the header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
