@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:iconifiedByDefault="false"
-        android:queryHint="Search all 100 recipes..."
+        android:queryHint="Search all recipes..."
         android:background="#1A888888" />
 
     <!-- Empty State Message -->
