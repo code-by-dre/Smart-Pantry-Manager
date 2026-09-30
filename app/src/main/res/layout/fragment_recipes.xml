@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Consistent Header with larger gaps -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +14,6 @@
         android:textSize="28sp"
         android:textStyle="bold" />
 
-    <!-- Search Bar -->
     <SearchView
         android:id="@+id/searchViewRecipes"
         android:layout_width="match_parent"
@@ -25,7 +23,6 @@
         android:queryHint="Search all 100 recipes..."
         android:background="#1A888888" />
 
-    <!-- Empty State Message -->
     <TextView
         android:id="@+id/tvEmptyRecipes"
         android:layout_width="match_parent"
