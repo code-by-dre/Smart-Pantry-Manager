@@ -1,20 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.SmartPantryManager" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color (Green). -->
+        <!-- Primary app colour. -->
         <item name="colorPrimary">@color/app_green</item>
         <item name="colorPrimaryVariant">@color/app_green_dark</item>
         <item name="colorOnPrimary">@color/white</item>
 
-        <!-- Secondary brand color (Yellow). -->
+        <!-- Secondary app colour  -->
         <item name="colorSecondary">@color/app_yellow</item>
         <item name="colorSecondaryVariant">@color/app_yellow_dark</item>
         <item name="colorOnSecondary">@color/black</item>
 
-        <!-- Status bar color -->
+        <!-- Status bar colour -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:windowLightStatusBar">false</item>
 
-        <!-- Forces the Action Bar to use our custom Green style below -->
+        <!-- Forces the Action Bar to use custom Green style -->
         <item name="actionBarStyle">@style/GreenActionBar</item>
     </style>
 
