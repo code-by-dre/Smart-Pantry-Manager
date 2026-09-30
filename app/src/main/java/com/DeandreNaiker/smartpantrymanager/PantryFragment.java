@@ -44,7 +44,7 @@ public class PantryFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewPantry);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        // Setup Filter Spinner
+        // setting up the filter spinner
         String[] filterCategories = {"All Categories", "Produce", "Dairy", "Spices", "Meat", "Grains", "Other"};
         ArrayAdapter<String> filterAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, filterCategories);
         spinnerFilterCategory.setAdapter(filterAdapter);
@@ -62,11 +62,11 @@ public class PantryFragment extends Fragment {
         cursor = databaseHelper.getAllIngredients();
         pantryAdapter = new PantryAdapter(requireContext(), cursor);
 
-        // Handle Clicks
+        // handle clicks
         pantryAdapter.setOnItemClickListener((id, name, quantity, unit, category) -> showEditIngredientDialog(id, name, quantity, unit, category));
         recyclerView.setAdapter(pantryAdapter);
 
-        // Swipe-to-delete with UNDO Snackbar
+        // the swipe-to-delete with undo snackbar
         new androidx.recyclerview.widget.ItemTouchHelper(new androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback(0, androidx.recyclerview.widget.ItemTouchHelper.LEFT | androidx.recyclerview.widget.ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -88,20 +88,20 @@ public class PantryFragment extends Fragment {
                     tempCategory = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PANTRY_CATEGORY));
                 } catch (Exception e) {}
 
-                // Make the category final for the lambda expression
+                // making the category final for the lambda expression
                 final String category = tempCategory;
 
-                // Delete the item
+                // deleting the item
                 databaseHelper.deleteIngredient(id);
                 refreshCursor();
 
-                // Show Snackbar with Undo functionality
+                // showing the snackbar with undo functionality
                 Snackbar.make(view, name + " removed from pantry", Snackbar.LENGTH_LONG)
                         .setAction("UNDO", v -> {
                             databaseHelper.insertOrUpdateIngredient(name, qty, unit, category);
                             refreshCursor();
                         })
-                        .setActionTextColor(Color.parseColor("#FFCA28")) // Yellow Action Text
+                        .setActionTextColor(Color.parseColor("#FFCA28")) // yellow text
                         .show();
             }
 
@@ -109,7 +109,7 @@ public class PantryFragment extends Fragment {
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
                 View itemView = viewHolder.itemView;
-                ColorDrawable background = new ColorDrawable(Color.parseColor("#EF5350")); // Red
+                ColorDrawable background = new ColorDrawable(Color.parseColor("#EF5350")); 
                 Drawable icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_menu_delete);
 
                 if (dX > 0) {
