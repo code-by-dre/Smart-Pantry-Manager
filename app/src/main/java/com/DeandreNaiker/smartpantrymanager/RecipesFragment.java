@@ -37,35 +37,35 @@ public class RecipesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         databaseHelper = new DatabaseHelper(requireContext());
 
-        // 1. Fetch available ingredients from the Pantry
+        // fetching the available ingredients from the pantry
         List<String> pantryIngredients = databaseHelper.getPantryIngredientNames();
 
-        // 2. Fetch all 100 recipes from SQLite
+        // fetching all recipes from SQLite
         masterRecipes = databaseHelper.getAllRecipes();
 
-        // 3. Filter recipes based on what's in the pantry (STRICT MATCHING)
+        // filtering the recipes based on what's in the pantry with strict measures
         matchingRecipes.clear();
         for (Recipe recipe : masterRecipes) {
-            boolean canMake = true; // Assume we can make it until proven otherwise
+            boolean canMake = true; 
 
             for (String requiredItem : recipe.getIngredients()) {
-                // If the pantry DOES NOT contain the required ingredient, we fail the strict match
+                
                 if (!pantryIngredients.contains(requiredItem.toLowerCase().trim())) {
                     canMake = false;
-                    break; // Stop checking this recipe, we are missing an ingredient
+                    break; // stops checking this recipe as we are missing an ingredient
                 }
             }
 
-            // Only add to suggestions if EVERY ingredient was found
+            // only add to suggestions if every ingredient was found
             if (canMake) {
                 matchingRecipes.add(recipe);
             }
         }
 
-        // 4. Initial Display (Pantry matches only)
+        // the initial display 
         updateRecyclerView(matchingRecipes, "No recipes match your current pantry. Add more ingredients to see suggestions!");
 
-        // 5. Search Bar Logic
+        // search bar 
         searchViewRecipes.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -75,10 +75,10 @@ public class RecipesFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (newText.trim().isEmpty()) {
-                    // Search is empty: revert to showing only pantry-matched recipes
+                    // the search is empty and we revert to showing only pantry-matched recipes
                     updateRecyclerView(matchingRecipes, "No recipes match your current pantry. Add more ingredients to see suggestions!");
                 } else {
-                    // User is typing: search through ALL 100 recipes by title
+                    // if the user is typing search through all recipes by title
                     List<Recipe> searchResults = new ArrayList<>();
                     for (Recipe recipe : masterRecipes) {
                         if (recipe.getTitle().toLowerCase().contains(newText.toLowerCase().trim())) {
@@ -87,14 +87,14 @@ public class RecipesFragment extends Fragment {
                     }
                     updateRecyclerView(searchResults, "No recipes found for '" + newText + "'.");
                 }
-                return true; // Indicates we handled the search text change
+                return true; 
             }
         });
 
         return view;
     }
 
-    // Helper method to refresh the RecyclerView data and handle empty states cleanly
+    // helper method to refresh the RecyclerView data and handle empty states cleanly
     private void updateRecyclerView(List<Recipe> recipesToDisplay, String emptyMessage) {
         if (recipesToDisplay.isEmpty()) {
             tvEmptyRecipes.setText(emptyMessage);
