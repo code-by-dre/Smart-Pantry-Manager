@@ -32,14 +32,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         holder.tvIngredients.setText("Ingredients: " + String.join(", ", recipe.getIngredients()));
         holder.tvInstructions.setText(recipe.getInstructions());
 
-        // Navigate to the RecipeDetailFragment screen on click
+        // navigating to the RecipeDetailFragment screen on click
         holder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("recipe_title", recipe.getTitle());
             bundle.putString("recipe_ingredients", String.join(", ", recipe.getIngredients()));
             bundle.putString("recipe_steps", recipe.getInstructions());
 
-            // Navigates using the NavController host
+            // navigates using the NavController host
             Navigation.findNavController(v).navigate(R.id.recipeDetailFragment, bundle);
         });
     }
