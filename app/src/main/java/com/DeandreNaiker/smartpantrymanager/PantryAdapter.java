@@ -57,18 +57,18 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.PantryView
             tempCategory = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PANTRY_CATEGORY));
         } catch (Exception e) {}
 
-        // Make the variable final so the lambda expression accepts it
+        // making the variable final so the lambda expression accepts it and we have no issues
         final String category = tempCategory;
 
         holder.tvName.setText(name);
         holder.tvQtyUnit.setText(quantity + " " + unit);
 
-        // LOW STOCK WARNING FEATURE
+        // low stock warning feature
         if (quantity < 2.0) {
-            holder.tvQtyUnit.setTextColor(Color.parseColor("#EF5350")); // Red warning
+            holder.tvQtyUnit.setTextColor(Color.parseColor("#EF5350")); // red warning
             holder.tvQtyUnit.setTypeface(null, Typeface.BOLD);
         } else {
-            holder.tvQtyUnit.setTextColor(Color.GRAY); // Default reset
+            holder.tvQtyUnit.setTextColor(Color.GRAY); // default reset
             holder.tvQtyUnit.setTypeface(null, Typeface.NORMAL);
         }
 
